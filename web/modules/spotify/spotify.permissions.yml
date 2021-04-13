@@ -1,0 +1,4 @@
+administer spotify configuration:
+  title: 'Administer spotify configuration'
+  description: 'Optional description.'
+  restrict access: true

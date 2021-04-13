@@ -1,0 +1,6 @@
+name: spotify
+type: module
+description: Modulo para conectar con Spotify
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9

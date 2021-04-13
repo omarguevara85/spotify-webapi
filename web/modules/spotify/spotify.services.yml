@@ -1,0 +1,6 @@
+services:
+  spotify.event_subscriber:
+    class: Drupal\spotify\EventSubscriber\SpotifySubscriber
+    arguments: ['@messenger']
+    tags:
+      - { name: event_subscriber }
