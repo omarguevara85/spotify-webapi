@@ -1,11 +1,3 @@
-spotify.example:
-  path: '/spotify/example'
-  defaults:
-    _title: 'Example'
-    _controller: '\Drupal\spotify\Controller\SpotifyController::build'
-  requirements:
-    _permission: 'access content'
-
 spotify.settings_form:
   path: '/admin/config/system/spotify'
   defaults:
@@ -13,3 +5,19 @@ spotify.settings_form:
     _form: 'Drupal\spotify\Form\SettingsForm'
   requirements:
     _permission: 'administer spotify configuration'
+
+spotify.lanzamientos:
+    path: 'lanzamientos'
+    defaults:
+        _controller: '\Drupal\spotify\Controller\SpotifyController::launch'
+        _title: 'Lanzamientos'
+    requirements:
+        _access: 'TRUE'
+
+spotify.artista:
+    path: 'artista/{id}'
+    defaults:
+        _controller: '\Drupal\spotify\Controller\SpotifyController::artist'
+        _title: 'Artista'
+    requirements:
+        _access: 'TRUE'

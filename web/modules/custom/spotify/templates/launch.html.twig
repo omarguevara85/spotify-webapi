@@ -1,0 +1,27 @@
+HOLAA
+<div>
+    <div class="box-list">
+        <ul class="albums">
+            {% for item in launch.albums.items %}
+                <li class="album">
+                    <img src="{{ item.images[1].url }}" alt="">
+                    <div class="data">
+                        <h4>{{ item.name }}</h4>
+                        <div class="artist">
+                            <span>Artista(s):</span>
+                            <ul>
+                                {% for artist in item.artists %}
+                                    <li>
+                                        <h3>
+                                            <a href="{{ path('spotify.artista', { 'id' : artist.id }) }}">{{ artist.name }}</a>
+                                        </h3>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>             
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
