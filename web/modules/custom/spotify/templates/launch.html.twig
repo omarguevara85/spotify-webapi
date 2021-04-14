@@ -1,4 +1,3 @@
-HOLAA
 <div>
     <div class="box-list">
         <ul class="albums">
@@ -6,15 +5,15 @@ HOLAA
                 <li class="album">
                     <img src="{{ item.images[1].url }}" alt="">
                     <div class="data">
-                        <h4>{{ item.name }}</h4>
+                        <h5>{{ item.name }}</h5>
                         <div class="artist">
                             <span>Artista(s):</span>
                             <ul>
                                 {% for artist in item.artists %}
                                     <li>
-                                        <h3>
+                                        <h6>
                                             <a href="{{ path('spotify.artista', { 'id' : artist.id }) }}">{{ artist.name }}</a>
-                                        </h3>
+                                        </h6>
                                     </li>
                                 {% endfor %}
                             </ul>

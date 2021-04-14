@@ -1,0 +1,81 @@
+main{
+    background-color: #FFFFFF;
+    padding: 10px;
+}
+
+li {
+    list-style-type: none;
+}
+
+.block-page-title-block{
+    text-align: center;
+    font-weight: bold;
+}
+
+.box-list {
+    width: auto;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.box-list ul.albums {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.box-list ul li.album {
+    background: #fff;
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    width: calc(30% - 20px);
+    margin: 0 10px 20px;
+    background: transparent;
+}
+
+.box-list ul li .data {
+    padding: 20px;
+    font-size: 15px;
+}
+
+.box-list ul li .data h4:after {
+    content: '';
+    margin: 5px 0 0;
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: #0380EE;
+}
+
+.box-list ul li .data .artist ul {
+    display: -webkit-inline-box;
+}
+
+.box-list ul li .data .artist ul li {
+    display: inline-flex;
+    margin: 0px 5px;
+}
+
+.box-list ul li .data h3 {
+    color: #000;
+    text-decoration: none;
+    transition: color 150ms ease;
+}
+
+.box-main .artist {
+    display: flex;
+    padding: 30px calc(50% - 400px);
+}
+
+.box-main .artist .pic img {
+    display: block;
+    margin: 20px auto;
+    border: 2px solid #165B98;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px #fff, 0 0 0 8px #0380EE;
+    font-size: 8px;
+}
+
+.box-main .artist .info {
+    margin-left: 20%;
+}

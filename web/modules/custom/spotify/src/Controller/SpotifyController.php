@@ -35,11 +35,23 @@ class SpotifyController extends ControllerBase {
       ],
     ];
 
-    $launch = $this->send($endpoint_launch, $method, $arg);
+    try {
+      $launch = $this->send($endpoint_launch, $method, $arg);
+    }catch (\Exception $e) {
+      \Drupal::logger('spotify')->error((string) "Error al intentar traer los lanzamientos, @error", [
+        '@method' => 'spotify',
+        '@error' => print_r($e->getMessage(), TRUE),
+      ]);
+    }
 
     return [
       '#theme' => 'launch',
       '#launch' => $launch,
+      '#attached' => [
+        'library' => [
+          'spotify/spotify',
+        ],
+      ],
     ];
   }
 
@@ -58,21 +70,32 @@ class SpotifyController extends ControllerBase {
       ],
     ];
 
-    $artist = $this->send($endpoint_artist, $method, $arg);
-    $tracks = $this->tracks($id);
+    try {
+      $artist = $this->send($endpoint_artist, $method, $arg);
+    }catch (\Exception $e) {
+      \Drupal::logger('spotify')->error((string) "Error al intentar traer los artistas, @error", [
+        '@method' => 'spotify',
+        '@error' => print_r($e->getMessage(), TRUE),
+      ]);
+    }
+    $tracks = $this->tracks($id, $token);
     
     return [
       '#theme' => 'artist',
       '#artist' => $artist,
-      '#tracks' => $tracks
+      '#tracks' => $tracks,
+      '#attached' => [
+        'library' => [
+          'spotify/spotify',
+        ],
+      ],
     ]; 
   }
 
   /**
    * Builds the response.
    */
-  public function tracks($id) {
-    $token = $this->getToken()['access_token'];
+  public function tracks($id, $token) {
     $endpoint_artist = $this->getConfig('spotify_endpoint_artist').$id.'/top-tracks';
     $method = 'GET';
     $arg = [            
@@ -85,7 +108,15 @@ class SpotifyController extends ControllerBase {
         'Authorization' =>  'Bearer '.$token
       ],
     ];
-    $tracks = $this->send($endpoint_artist, $method, $arg);
+
+    try {
+      $tracks = $this->send($endpoint_artist, $method, $arg);
+    }catch (\Exception $e) {
+      \Drupal::logger('spotify')->error((string) "Error al intentar traer los albunes, @error", [
+        '@method' => 'spotify',
+        '@error' => print_r($e->getMessage(), TRUE),
+      ]);
+    }
 
     return $tracks;
   }
